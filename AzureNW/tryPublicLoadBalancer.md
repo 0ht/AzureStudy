@@ -9,10 +9,10 @@
 
 1. (準備) VM・アプリのデプロイ
 1. Load Balancerを作成
-   1. パブリックIP作成
-   2. Load Balancer作成
-   3. プローブ作成
-   4. ルール作成
+   1. パブリックIP作成：`az network public-ip create`
+   2. Load Balancer作成：`az network lb create`
+   3. プローブ作成：`az network lb probe create`
+   4. ルール作成：``
    5. バックエンドプールの構成
 
 ##  (準備) VM・アプリのデプロイ
@@ -57,7 +57,7 @@ az network public-ip create \
 
 ### Load Balancer作成
 
-前ステップで作成した
+前ステップで作成したパブリックIPを指定してLoad Balancerを作成
 
 ```sh
 az network lb create \
@@ -66,4 +66,61 @@ az network lb create \
   --public-ip-address myPublicIP \
   --frontend-ip-name myFrontEndPool \
   --backend-pool-name myBackEndPool
+```
+
+### プローブ作成
+
+
+
+```sh
+az network lb probe create \
+  --resource-group learn-2a118604-18ff-47d4-9f6a-dee183edd593 \
+  --lb-name myLoadBalancer \
+  --name myHealthProbe \
+  --protocol tcp \
+  --port 80
+```
+
+### ルール作成
+
+```sh
+az network lb rule create \
+  --resource-group learn-2a118604-18ff-47d4-9f6a-dee183edd593 \
+  --lb-name myLoadBalancer \
+  --name myHTTPRule \
+  --protocol tcp \
+  --frontend-port 80 \
+  --backend-port 80 \
+  --frontend-ip-name myFrontEndPool \
+  --backend-pool-name myBackEndPool \
+  --probe-name myHealthProbe
+```
+
+### バックエンドプールの構成
+
+```sh
+az network nic ip-config update \
+  --resource-group learn-2a118604-18ff-47d4-9f6a-dee183edd593 \
+  --nic-name webNic1 \
+  --name ipconfig1 \
+  --lb-name myLoadBalancer \
+  --lb-address-pools myBackEndPool
+
+az network nic ip-config update \
+  --resource-group learn-2a118604-18ff-47d4-9f6a-dee183edd593 \
+  --nic-name webNic2 \
+  --name ipconfig1 \
+  --lb-name myLoadBalancer \
+  --lb-address-pools myBackEndPool
+```
+
+## 確認
+
+
+```sh
+echo http://$(az network public-ip show \
+                --resource-group learn-2a118604-18ff-47d4-9f6a-dee183edd593 \
+                --name myPublicIP \
+                --query ipAddress \
+                --output tsv)
 ```
