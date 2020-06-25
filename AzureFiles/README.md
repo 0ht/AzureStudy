@@ -25,13 +25,13 @@ Azure Files利用には、以下のような利点がある。
 
 ## データ移行には何が使用可能か？
 
-ユーティリティ	説明
-AzCopy	最高のパフォーマンスを提供するコマンドライン ツール。少数の小さいファイルに特に適しています。
-Robocopy	Windows と Windows Server に付属しているコマンドライン ツール。 AzCopy は Azure 対応に書かれており、パフォーマンスが向上します。
-Azure Storage Explorer	Windows、Linux、macOS で実行できるグラフィカル ファイル管理ユーティリティ。
-Azure portal	ポータルを使用して、ファイルとフォルダーをインポートします。
-Azure File Sync	初期のデータ転送に使用でき、その後、データ転送が済んだらアンインストールできます。
-Azure Data Box	最大 35 TB のデータがあり、1 週間以内にインポートする必要がある場合。
+ユーティリティ	説明  
+- AzCopy	最高のパフォーマンスを提供するコマンドライン ツール。少数の小さいファイルに特に適しています。
+- Robocopy	Windows と Windows Server に付属しているコマンドライン ツール。 AzCopy は Azure 対応に書かれており、パフォーマンスが向上します。
+- Azure Storage Explorer	Windows、Linux、macOS で実行できるグラフィカル ファイル管理ユーティリティ。
+- Azure portal	ポータルを使用して、ファイルとフォルダーをインポートします。
+- Azure File Sync	初期のデータ転送に使用でき、その後、データ転送が済んだらアンインストールできます。
+- Azure Data Box	最大 35 TB のデータがあり、1 週間以内にインポートする必要がある場合。
 
 ## 構成
 
@@ -69,16 +69,13 @@ az storage share create \
 --name <share name>
 ```
 
---account-name と、--account-key または --sas-token のどちらかの引数を使用します。
---connection-string でストレージ アカウントの接続文字列を使用します。
+--account-name と、--account-key または --sas-token のどちらかの引数を使用  
+--connection-string でストレージ アカウントの接続文字列を使用  
 
 ### 認証について
 
-ファイル共有へアクセスするコンピュータがAzureでホストされているドメイン参加済みのWindowsVMの場合は、Azure AD認証が必要.
+ファイル共有へアクセスするコンピュータがAzureでホストされているドメイン参加済みのWindowsVMの場合は、Azure AD認証が必要.  
 現時点では、SMB経由のKerberos認証はサポートされていない。
-
-選択肢としては、
-- 共有キー
 
 ## ファイル共有のセキュリティ
 
@@ -135,7 +132,7 @@ DS認証もNTFS DACLもなんもわからん
 7. ディレクトリの構成、ファイルレベルのNTFSアクセスの許可
 8. AzureAD資格情報を使用して共有をマウント
 
-### 共有スナップショットを使用してご削除を防ぐ
+### 共有スナップショットを使用して誤削除を防ぐ
 
 スナップショットは、ファイル共有のルート レベルにあり、それに含まれるすべてのフォルダーとファイルに適用される
 
