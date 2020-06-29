@@ -13,6 +13,8 @@ Azure勉強時のメモ
 
 ### - [監視・分析系](./AzureObservability/)
 
+### - [管理系](./AzureManagement/)
+
 ## PaaS 編
 
 ### - [Azure App Service](./AzureAppService)

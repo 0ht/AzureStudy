@@ -3,6 +3,7 @@
 基本、MS Learnのシナリオをそのまま実行してみる。
 
 前提
+
 - 1つの可用性セット内に2台の仮想マシン
 
 手順は以下の通り
@@ -24,25 +25,25 @@
 git clone https://github.com/MicrosoftDocs/mslearn-improve-app-scalability-resiliency-with-load-balancer.git
 cd mslearn-improve-app-scalability-resiliency-with-load-balancer
 
-bash create-high-availability-vm-with-sets.sh learn-2a118604-18ff-47d4-9f6a-dee183edd593
+bash create-high-availability-vm-with-sets.sh learn-2a118604-18ff-47d4-9f6a-XXXXXXXXXXXX
 ```
 
 以下の様に出来上がる。
 
 ```sh
 oh_tomtom@Azure:~/mslearn-improve-app-scalability-resiliency-with-load-balancer$ az vm list --output tsv
-None            None    None    None            None    /subscriptions/6fed9ee8-9478-4abb-9141-f53f6943f1e6/resourceGroups/LEARN-2A118604-18FF-47D4-9F6A-DEE183EDD593/providers/Microsoft.Compute/virtualMachines/webVM1      None    None    None    westus  webVM1       None     None    Succeeded       None    LEARN-2A118604-18FF-47D4-9F6A-DEE183EDD593      None                    Microsoft.Compute/virtualMachines     None    055dd782-82ed-44da-9ad3-a6f3c4fd4f2f    None
-None            None    None    None            None    /subscriptions/6fed9ee8-9478-4abb-9141-f53f6943f1e6/resourceGroups/LEARN-2A118604-18FF-47D4-9F6A-DEE183EDD593/providers/Microsoft.Compute/virtualMachines/webVM2      None    None    None    westus  webVM2       None     None    Succeeded       None    LEARN-2A118604-18FF-47D4-9F6A-DEE183EDD593      None                    Microsoft.Compute/virtualMachines     None    d00964b5-1e00-48fc-bcb6-e9dd5202c208    None
+None            None    None    None            None    /subscriptions/6fed9ee8-9478-4abb-9141-XXXXXXXXXXXX/resourceGroups/learn-2a118604-18ff-47d4-9f6a-XXXXXXXXXXXX/providers/Microsoft.Compute/virtualMachines/webVM1      None    None    None    westus  webVM1       None     None    Succeeded       None    learn-2a118604-18ff-47d4-9f6a-XXXXXXXXXXXX      None                    Microsoft.Compute/virtualMachines     None    055dd782-82ed-44da-9ad3-a6f3c4fd4f2f    None
+None            None    None    None            None    /subscriptions/6fed9ee8-9478-4abb-9141-XXXXXXXXXXXX/resourceGroups/learn-2a118604-18ff-47d4-9f6a-XXXXXXXXXXXX/providers/Microsoft.Compute/virtualMachines/webVM2      None    None    None    westus  webVM2       None     None    Succeeded       None    learn-2a118604-18ff-47d4-9f6a-XXXXXXXXXXXX      None                    Microsoft.Compute/virtualMachines     None    d00964b5-1e00-48fc-bcb6-e9dd5202c208    None
 oh_tomtom@Azure:~/mslearn-improve-app-scalability-resiliency-with-load-balancer$
 
 oh_tomtom@Azure:~/mslearn-improve-app-scalability-resiliency-with-load-balancer$ az vm list --output table
 Name    ResourceGroup                               Location    Zones
 ------  ------------------------------------------  ----------  -------
-webVM1  LEARN-2A118604-18FF-47D4-9F6A-DEE183EDD593  westus
-webVM2  LEARN-2A118604-18FF-47D4-9F6A-DEE183EDD593  westus
+webVM1  learn-2a118604-18ff-47d4-9f6a-XXXXXXXXXXXX  westus
+webVM2  learn-2a118604-18ff-47d4-9f6a-XXXXXXXXXXXX  westus
 ```
 
-## Load Balancer作成
+## Load Balancerの構成
 
 ### パブリックIP作成
 
@@ -50,7 +51,7 @@ myPublicIPという名前でパブリックIPを作成する。
 
 ```sh
 az network public-ip create \
-  --resource-group learn-2a118604-18ff-47d4-9f6a-dee183edd593 \
+  --resource-group learn-2a118604-18ff-47d4-9f6a-XXXXXXXXXXXX \
   --allocation-method Static \
   --name myPublicIP
 ```
@@ -61,7 +62,7 @@ az network public-ip create \
 
 ```sh
 az network lb create \
-  --resource-group learn-2a118604-18ff-47d4-9f6a-dee183edd593 \
+  --resource-group learn-2a118604-18ff-47d4-9f6a-XXXXXXXXXXXX \
   --name myLoadBalancer \
   --public-ip-address myPublicIP \
   --frontend-ip-name myFrontEndPool \
@@ -70,11 +71,9 @@ az network lb create \
 
 ### プローブ作成
 
-
-
 ```sh
 az network lb probe create \
-  --resource-group learn-2a118604-18ff-47d4-9f6a-dee183edd593 \
+  --resource-group learn-2a118604-18ff-47d4-9f6a-XXXXXXXXXXXX \
   --lb-name myLoadBalancer \
   --name myHealthProbe \
   --protocol tcp \
@@ -85,7 +84,7 @@ az network lb probe create \
 
 ```sh
 az network lb rule create \
-  --resource-group learn-2a118604-18ff-47d4-9f6a-dee183edd593 \
+  --resource-group learn-2a118604-18ff-47d4-9f6a-XXXXXXXXXXXX \
   --lb-name myLoadBalancer \
   --name myHTTPRule \
   --protocol tcp \
@@ -100,14 +99,14 @@ az network lb rule create \
 
 ```sh
 az network nic ip-config update \
-  --resource-group learn-2a118604-18ff-47d4-9f6a-dee183edd593 \
+  --resource-group learn-2a118604-18ff-47d4-9f6a-XXXXXXXXXXXX \
   --nic-name webNic1 \
   --name ipconfig1 \
   --lb-name myLoadBalancer \
   --lb-address-pools myBackEndPool
 
 az network nic ip-config update \
-  --resource-group learn-2a118604-18ff-47d4-9f6a-dee183edd593 \
+  --resource-group learn-2a118604-18ff-47d4-9f6a-XXXXXXXXXXXX \
   --nic-name webNic2 \
   --name ipconfig1 \
   --lb-name myLoadBalancer \
@@ -119,7 +118,7 @@ az network nic ip-config update \
 
 ```sh
 echo http://$(az network public-ip show \
-                --resource-group learn-2a118604-18ff-47d4-9f6a-dee183edd593 \
+                --resource-group learn-2a118604-18ff-47d4-9f6a-XXXXXXXXXXXX \
                 --name myPublicIP \
                 --query ipAddress \
                 --output tsv)

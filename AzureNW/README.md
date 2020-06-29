@@ -17,6 +17,7 @@
   - Border Gateway Protocol：オンプレBGPルートを仮想ネットワークに反映、Azure VPN Gateway or ExpressRoute 
 
 ## 以下詳細
+
 - [VPNゲートウェイ](./VPN.md)
   - [ポイント：サイトでVPNを構成する](./tryP2SVPNGateway.md)
 - [仮想ネットワークピアリング](./VNetPeering.md)
@@ -42,5 +43,4 @@
 - IPv6構成する場合、アドレスは自動で振られないので明示的に追加する必要がある。VMとVMの通信にIPV6使えない？ので、LB経由で構成する必要がある？
 - VMにNSGを追加するPowerShellは、Set-AzNetworkInterface
 - PowerShellでのNSG設定方法、New-AzNetworkSecurityRuleConfig 、New-AzNetworkSecurityGroup
-- PeeringがこうせいされたVNえｔにサブネットの追加・削除は不可
-![picture 5](images/fcb70635d9265482f9af006764fd8b5e13eccf4b1079a948106af3af2c8583c1.png)  
+- Peeringが構成されたVnetにサブネットの追加・削除は不可
