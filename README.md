@@ -15,6 +15,10 @@ Azure勉強時のメモ
 
 ### - [管理系](./AzureManagement/)
 
+### - [可用性](./AzureAvailability/)
+
+### - [ID管理 / Azure AD](./AzureAD/)
+
 ## PaaS 編
 
 ### - [Azure App Service](./AzureAppService)
