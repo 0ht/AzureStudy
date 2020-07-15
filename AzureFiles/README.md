@@ -22,16 +22,16 @@ Azure Files利用には、以下のような利点がある。
 - Standard パフォーマンス: 2 桁ミリ秒の待機時間、10,000 IOPS、300 MBps の帯域幅
 - Premium パフォーマンス: 1 桁ミリ秒の待機時間、100,000 IOPS、5 GBps の帯域幅
 
+## データ移行には何が使用可能か
 
-## データ移行には何が使用可能か？
-
-ユーティリティ	説明  
-- AzCopy	最高のパフォーマンスを提供するコマンドライン ツール。少数の小さいファイルに特に適しています。
-- Robocopy	Windows と Windows Server に付属しているコマンドライン ツール。 AzCopy は Azure 対応に書かれており、パフォーマンスが向上します。
-- Azure Storage Explorer	Windows、Linux、macOS で実行できるグラフィカル ファイル管理ユーティリティ。
-- Azure portal	ポータルを使用して、ファイルとフォルダーをインポートします。
-- Azure File Sync	初期のデータ転送に使用でき、その後、データ転送が済んだらアンインストールできます。
-- Azure Data Box	最大 35 TB のデータがあり、1 週間以内にインポートする必要がある場合。
+ユーティリティ | 説明 |  
+--------|----|-
+AzCopy | 最高のパフォーマンスを提供するコマンドライン ツール。少数の小さいファイルに特に適しています。
+Robocopy | Windows と Windows Server に付属しているコマンドライン ツール。 AzCopy は Azure 対応に書かれており、パフォーマンスが向上します。
+Azure Storage Explorer | Windows、Linux、macOS で実行できるグラフィカル ファイル管理ユーティリティ。
+Azure portal | ポータルを使用して、ファイルとフォルダーをインポートします。
+Azure File Sync | 初期のデータ転送に使用でき、その後、データ転送が済んだらアンインストールできます。
+Azure Data Box | 最大 35 TB のデータがあり、1 週間以内にインポートする必要がある場合。
 
 ## 構成
 
@@ -136,11 +136,7 @@ DS認証もNTFS DACLもなんもわからん
 
 スナップショットは、ファイル共有のルート レベルにあり、それに含まれるすべてのフォルダーとファイルに適用される
 
-
-
 ## ポイント
 
 - File Syncでは、General type useのみサポート、failoverはサポートされていない
 - File Syncでは、windowsクラスターfailoverのdeduplication機能は使用できない
-  
-  

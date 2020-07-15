@@ -18,6 +18,7 @@ https://docs.microsoft.com/ja-jp/azure/azure-resource-manager/management/move-su
 - VNEtは同じサブスクリプション内で移動可能、**併せて依存しているものをすべて**持っていく必要がある
 - **Azure Key Vault 内の証明書**を使用してサブスクリプション間で仮想マシンを移動することはできません。
 - Azure AD DSは移動できない
+- Azure AD **テナントを跨った移動は不可**
 
 ## 移動をテストする
 
