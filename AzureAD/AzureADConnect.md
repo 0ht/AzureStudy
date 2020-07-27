@@ -1,5 +1,7 @@
 # Azure AD ConnectでADをAzure ADに接続
 
+
+
 ## 概要
 
 - オンプレミスの Windows Server Active Directory ソリューションを使用する企業は、既存のユーザーとグループを Azure AD Connect を使用して Azure Active Directory と統合可能

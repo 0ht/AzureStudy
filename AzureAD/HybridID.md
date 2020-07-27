@@ -62,3 +62,4 @@ Windows Hello for Business のサポート | キー信頼モデル | キー信�
 サポートされる従来のプロトコルのブロック | はい | はい | はい
 サインイン ページのロゴ、イメージ、説明のカスタマイズ可能性 | Azure AD Premium を使用して可能 | Azure AD Premium を使用して可能 | はい
 サポートされる高度なシナリオ | Smart Password Lockout/漏洩した資格情報レポート、Azure AD Premium P2 を使用 | Smart Password Lockout | 複数サイトの低待機時間の認証システム/AD FS エクストラネットのロックアウト/サード パーティの ID システムとの統合
+
