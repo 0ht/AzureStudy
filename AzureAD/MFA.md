@@ -41,7 +41,22 @@ OATH ハードウェア トークン | Azure MFA と SSPR
 音声通話 | Azure MFA と SSPR
 アプリ パスワード | Azure MFA (特定のケースで)
 
+
+Method | プライマリ認証 | セカンダリ認証
+-------|---------|--------
+パスワード | はい | 
+Microsoft Authenticator アプリ | はい (プレビュー) | MFA と SSPR
+FIDO2 セキュリティ キー (プレビュー) | はい | MFA のみ
+OATH ソフトウェア トークン | いいえ | MFA
+OATH ハードウェア トークン (プレビュー) | はい | MFA
+SMS | はい (プレビュー) | MFA と SSPR
+音声通話 | いいえ | MFA と SSPR
+セキュリティの質問 | いいえ | SSPR のみ
+電子メール アドレス | いいえ | SSPR のみ
+アプリ パスワード | いいえ | MFA のみ(特定の場合)
+
 ### ユーザーの認証方法の選択
+
 
 - 選択した方法をユーザーが登録する方法を決定する必要があります。 
   - 最も簡単な方法は **Azure Active Directory Identity Protection** を使用することです。 組織に Identity Protection のライセンスがある場合、次回サインインしたとき、MFA の登録をユーザーに促すよう、それを構成できます。

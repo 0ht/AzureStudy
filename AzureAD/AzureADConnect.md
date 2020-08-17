@@ -27,3 +27,7 @@
 
 Azure AD B2Bを使用すると、他の企業のユーザーを自社の Azure AD テナントにゲスト ユーザーとして追加できる
 
+## ADSync サービスアカウントのパスワードの変更
+
+https://docs.microsoft.com/ja-jp/azure/active-directory/hybrid/how-to-connect-sync-change-serviceacct-pass
+

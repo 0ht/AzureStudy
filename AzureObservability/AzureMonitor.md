@@ -5,8 +5,39 @@
 ### こんな時に利用
 
 - クラウドとオンプレミスの両方からログ データを収集し、分析し、操作するのに役立つ 1 つのソリューションが必要である。
-- Azure Application Insights や Azure Security Center などのサービスを使用している。 
-  - これらのサービスでは、収集されたデータを Azure Monitor 用のワークスペースに格納します。 これで、Azure Monitor Log Analytics を使用して、対話形式でデータのクエリを実行できます。
+- Azure Application Insights や Azure Security Center などのサービスを使用している
+  - これらのサービスでは、収集されたデータを Azure Monitor 用のワークスペースに格納します。 
+- Azure Monitor Log Analytics を使用して、対話形式でデータのクエリを実行できます。
+- Azure Monitor for VMs、Azure Monitor for Containersを使用してインフラの問題解析
+- アラートや自動化されたアクションを実行
+- ダッシュボードとブックで視覚化
+
+以下のようなデータをソースに統合している。
+
+- アプリケーション監視データ
+- ゲストOS監視データ
+- Azureリソース監視データ
+- Azureサブスクリプション監視データ
+- Azureテナント監視データ
+- カスタムのソース
+- Application Insights
+
+ソースの種類としては、
+
+- メトリック
+- ログ
+- アクティビティログ
+がある。
+メトリックはリアルタイムに近い形で表示、ログは分析のためクエリ機能が提供されている。
+
+Azure SQL Databaseなどの一部のリソースについては、診断ログを有効にしないと情報を受け取らないケースがある。
+また、仮想マシンについては、Log Analyticsエージェントを導入してLog Analyticsワークスペースにデータを送るように設定すると出力される情報量が増加する。
+
+ログについては、Kustoクエリ言語でログをクエリする。
+
+### メニュー
+
+![picture 8](images/d75ade446d1e66a615ea2e9810ef16d4b4bc26b9c2e605f374154969ae20a96f.png)  
 
 ### 利点
 
@@ -36,3 +67,13 @@
 | where UpdateState == "Needed"
 | summarize dcount(Computer) by Classification
 ```
+
+## Azure Monitor WorkBook
+
+https://docs.microsoft.com/ja-jp/azure/azure-monitor/platform/workbooks-overview
+https://docs.microsoft.com/ja-jp/azure/azure-monitor/platform/workbooks-automate
+
+## Azure Monitor ログクエリ
+
+https://docs.microsoft.com/en-us/azure/azure-monitor/log-query/joins
+
