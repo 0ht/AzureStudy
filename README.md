@@ -6,7 +6,7 @@
 このメモは、主にMS LEarnでの学習からのメモですが、理解が浅い部分等をDocs等で補強しています。結局、資格試験取得においてはMS Learnのコンテンツでは対応できない部分が多くあり、Docsの読み込みが少なからず必要になると、感じました。
 Docsはそれこそ仕様が網羅されたドキュメントですので、大事な部分を嗅ぎ分けて読み込むのがポイントになるかと思います。その部分、Docの参照個所を交えながらメモしています。
 
-## IaaS 一般知識編
+## IaaS
 
 ### - [Azure 仮想マシン](./AzureVM/)
 
@@ -34,10 +34,8 @@ Docsはそれこそ仕様が網羅されたドキュメントですので、大�
 
 ### - [Azure Migrate](./AzureMigrate/)
 
-## その他 これから勉強が必要なもの
+## アーキテクチャー・フレームワーク
 
-- セキュリティ系
-- PowerShell全般
-- AKS関連 （はやくやりたい）
-- データストア系
-- PaaS系（App Service etc）
+### - [クラウド導入フレームワーク（Cloud Adoption Framework）](./CloudAdoptionFramework/)
+
+### - [Azure Well-Architected Framework](./AzureWell-ArchitectedFramework/)
